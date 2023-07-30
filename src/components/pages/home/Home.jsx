@@ -1,13 +1,17 @@
 import axios from "axios";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export const Home = () => {
+  const [movies, setMovies] = useState([]);
+
   useEffect(() => {
     axios
       .get(" http://localhost:5000/movies")
-      .then((res) => console.log(res.data))
+      .then((res) => setMovies(res.data))
       .catch((err) => console.log(err));
   }, []);
+
+  console.log("movies:", movies);
 
   return <div>Home</div>;
 };
