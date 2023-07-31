@@ -11,7 +11,17 @@ export const Home = () => {
       .catch((err) => console.log(err));
   }, []);
 
-  console.log("movies:", movies);
-
-  return <div>Home</div>;
+  return (
+    <>
+      <div>
+        {movies.map((movie) => {
+          return (
+            <div key={movie.id}>
+              <h2>{movie.name}</h2>
+            </div>
+          );
+        })}
+      </div>
+    </>
+  );
 };
