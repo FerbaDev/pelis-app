@@ -26,7 +26,7 @@ const ExpandMore = styled((props) => {
   }),
 }));
 
-export const CardMovie = ({ movie }) => {
+export const CardMovie = ({ movie, handleLike }) => {
   const [expanded, setExpanded] = useState(false);
 
   const handleExpandClick = () => {
@@ -35,15 +35,7 @@ export const CardMovie = ({ movie }) => {
 
   return (
     <Card sx={{ maxWidth: 345 }}>
-      <CardHeader
-        action={
-          <IconButton aria-label="settings">
-            <MoreVertIcon />
-          </IconButton>
-        }
-        title={movie.name}
-        subheader={movie.createdAt}
-      />
+      <CardHeader title={movie.name} subheader={movie.createdAt} />
       <CardMedia
         component="img"
         height="194"
@@ -57,10 +49,10 @@ export const CardMovie = ({ movie }) => {
       </CardContent>
       <CardActions disableSpacing>
         <IconButton aria-label="add to favorites">
-          <FavoriteIcon />
-        </IconButton>
-        <IconButton aria-label="share">
-          <ShareIcon />
+          <FavoriteIcon
+            color={movie.isLiked ? "error" : "disabled"}
+            onClick={() => handleLike(movie)}
+          />
         </IconButton>
         <ExpandMore
           expand={expanded}
