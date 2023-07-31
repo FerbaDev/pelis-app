@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { CardMovie } from "../../common/cardMovie/CardMovie";
 
 export const Home = () => {
   const [movies, setMovies] = useState([]);
@@ -15,11 +16,7 @@ export const Home = () => {
     <>
       <div>
         {movies.map((movie) => {
-          return (
-            <div key={movie.id}>
-              <h2>{movie.name}</h2>
-            </div>
-          );
+          return <CardMovie key={movie.id} movie={movie} />;
         })}
       </div>
     </>
