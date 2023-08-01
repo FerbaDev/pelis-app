@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { CardMovie } from "../../common/cardMovie/CardMovie";
 import styles from "./home.module.css";
+import { Header } from "../../common/header/Header";
 
 export const Home = () => {
   const [movies, setMovies] = useState([]);
@@ -27,7 +28,7 @@ export const Home = () => {
 
   return (
     <>
-      <h1 className={styles.header}>Películas</h1>
+      <Header />
       <div className={styles.container}>
         {movies.map((movie) => {
           return (
