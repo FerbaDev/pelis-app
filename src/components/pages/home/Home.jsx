@@ -7,6 +7,7 @@ import { Header } from "../../common/header/Header";
 export const Home = () => {
   const [movies, setMovies] = useState([]);
   const [tieneLike, setTieneLike] = useState(false);
+  const [favourite, setFavourite] = useState(false);
 
   useEffect(() => {
     axios
@@ -26,15 +27,31 @@ export const Home = () => {
       .catch((err) => console.log(err));
   };
 
+  const moviesLiked = movies.filter((movie) => movie.isLiked);
+
   return (
     <>
-      <Header />
+      <Header setFavourite={setFavourite} />
       <div className={styles.container}>
-        {movies.map((movie) => {
-          return (
-            <CardMovie key={movie.id} movie={movie} handleLike={handleLike} />
-          );
-        })}
+        {!favourite
+          ? movies.map((movie) => {
+              return (
+                <CardMovie
+                  key={movie.id}
+                  movie={movie}
+                  handleLike={handleLike}
+                />
+              );
+            })
+          : moviesLiked.map((movie) => {
+              return (
+                <CardMovie
+                  key={movie.id}
+                  movie={movie}
+                  handleLike={handleLike}
+                />
+              );
+            })}
       </div>
     </>
   );
