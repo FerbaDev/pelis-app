@@ -3,11 +3,17 @@ import { useEffect, useState } from "react";
 import { CardMovie } from "../../common/cardMovie/CardMovie";
 import styles from "./home.module.css";
 import { Header } from "../../common/header/Header";
+import { Button } from "@mui/material";
+import { CreateMovieModal } from "../../common/CreateMovie/CreateMovieModal/CreateMovieModal";
 
 export const Home = () => {
   const [movies, setMovies] = useState([]);
   const [tieneLike, setTieneLike] = useState(false);
   const [favourite, setFavourite] = useState(false);
+
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
 
   useEffect(() => {
     axios
@@ -32,6 +38,8 @@ export const Home = () => {
   return (
     <>
       <Header setFavourite={setFavourite} />
+      <Button onClick={handleOpen}>Open modal</Button>
+      <CreateMovieModal open={open} handleClose={handleClose} />
       <div className={styles.container}>
         {!favourite
           ? movies.map((movie) => {
