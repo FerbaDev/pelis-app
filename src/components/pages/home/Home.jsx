@@ -31,11 +31,17 @@ export const Home = () => {
       .patch(`http://localhost:5000/movies/${movie.id}`, {
         isLiked: !movie.isLiked,
       })
-      .then((res) => setTieneLike(true))
+      .then((res) => {
+        setTieneLike(true), console.log(res);
+      })
       .catch((err) => console.log(err));
   };
 
   const moviesLiked = movies.filter((movie) => movie.isLiked);
+
+  const deleteMovieById = (id) => {
+    alert(id);
+  };
 
   return (
     <>
@@ -54,6 +60,7 @@ export const Home = () => {
                   key={movie.id}
                   movie={movie}
                   handleLike={handleLike}
+                  deleteMovieById={deleteMovieById}
                 />
               );
             })
@@ -63,6 +70,7 @@ export const Home = () => {
                   key={movie.id}
                   movie={movie}
                   handleLike={handleLike}
+                  deleteMovieById={deleteMovieById}
                 />
               );
             })}
