@@ -14,7 +14,7 @@ const style = {
   p: 4,
 };
 
-export const CreateMovieModal = ({ open, handleClose }) => {
+export const CreateMovieModal = ({ open, handleClose, setIsMovieCreated }) => {
   let initialValues = {
     name: "",
     description: "",
@@ -35,6 +35,7 @@ export const CreateMovieModal = ({ open, handleClose }) => {
       .post("http://localhost:5000/movies", peliNueva)
       .then((res) => {
         handleClose();
+        setIsMovieCreated(true);
       })
       .catch((err) => console.log(err));
   };

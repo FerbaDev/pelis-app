@@ -10,6 +10,7 @@ export const Home = () => {
   const [movies, setMovies] = useState([]);
   const [tieneLike, setTieneLike] = useState(false);
   const [favourite, setFavourite] = useState(false);
+  const [isMovieCreated, setIsMovieCreated] = useState(false);
 
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
@@ -22,7 +23,8 @@ export const Home = () => {
       .catch((err) => console.log(err));
 
     setTieneLike(false);
-  }, [tieneLike]);
+    setIsMovieCreated(false);
+  }, [tieneLike, isMovieCreated]);
 
   const handleLike = (movie) => {
     axios
@@ -39,7 +41,11 @@ export const Home = () => {
     <>
       <Header setFavourite={setFavourite} />
       <Button onClick={handleOpen}>Agregar peli</Button>
-      <CreateMovieModal open={open} handleClose={handleClose} />
+      <CreateMovieModal
+        open={open}
+        handleClose={handleClose}
+        setIsMovieCreated={setIsMovieCreated}
+      />
       <div className={styles.container}>
         {!favourite
           ? movies.map((movie) => {
