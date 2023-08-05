@@ -23,6 +23,14 @@
       "img": "https://www.cronista.com/files/image/488/488121/636e67d2c55ba.jpg",
       "createdAt": "29 de noviembre de 2001",
       "isLiked": false
+    },
+    {
+      "name": "Oppenheimer",
+      "description": "La historia de científico J. Robert Oppenheimer y su rol en el desarrollo de la bomba atómica.",
+      "img": "https://m.media-amazon.com/images/M/MV5BNThlYjhlZGMtZmM0NC00YTU2LWE0NTYtMDRiM2UzY2NhYWMwXkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_FMjpg_UX320_.jpg",
+      "createdAt": "Julio de 2023",
+      "isLiked": false,
+      "id": 4
     }
   ]
 }

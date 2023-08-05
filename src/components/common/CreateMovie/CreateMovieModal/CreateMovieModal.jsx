@@ -1,4 +1,5 @@
 import { Box, Button, Modal, TextField, Typography } from "@mui/material";
+import axios from "axios";
 import { useFormik } from "formik";
 
 const style = {
@@ -22,7 +23,20 @@ export const CreateMovieModal = ({ open, handleClose }) => {
   };
 
   const onSubmit = (data) => {
-    console.log(data);
+    let peliNueva = {
+      name: data.name,
+      description: data.description,
+      img: data.img,
+      createdAt: data.createdAt,
+      isLiked: false,
+    };
+
+    axios
+      .post("http://localhost:5000/movies", peliNueva)
+      .then((res) => {
+        handleClose();
+      })
+      .catch((err) => console.log(err));
   };
 
   const { handleChange, handleSubmit } = useFormik({
@@ -41,7 +55,7 @@ export const CreateMovieModal = ({ open, handleClose }) => {
       >
         <Box sx={style}>
           <Typography id="modal-modal-title" variant="h6" component="h2">
-            Text in a modal
+            Agregar película
           </Typography>
           <form
             action=""
