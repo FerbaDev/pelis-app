@@ -1,4 +1,5 @@
 import { Box, Button, Modal, TextField, Typography } from "@mui/material";
+import { useFormik } from "formik";
 
 const style = {
   position: "absolute",
@@ -13,6 +14,23 @@ const style = {
 };
 
 export const CreateMovieModal = ({ open, handleClose }) => {
+  let initialValues = {
+    name: "",
+    description: "",
+    img: "",
+    createdAt: "",
+  };
+
+  const onSubmit = (data) => {
+    console.log(data);
+  };
+
+  const { handleChange, handleSubmit } = useFormik({
+    initialValues,
+
+    onSubmit,
+  });
+
   return (
     <>
       <Modal
@@ -34,24 +52,31 @@ export const CreateMovieModal = ({ open, handleClose }) => {
               alignItems: "center",
               height: "400px",
             }}
+            onSubmit={handleSubmit}
           >
             <TextField
               id="outlined-basic"
               label="Título"
               variant="outlined"
               fullWidth
+              name="name"
+              onChange={handleChange}
             />
             <TextField
               id="outlined-basic"
               label="Fecha"
               variant="outlined"
               fullWidth
+              name="createdAt"
+              onChange={handleChange}
             />
             <TextField
               id="outlined-basic"
               label="Descripción"
               variant="outlined"
               fullWidth
+              name="description"
+              onChange={handleChange}
             />
 
             <TextField
@@ -59,8 +84,12 @@ export const CreateMovieModal = ({ open, handleClose }) => {
               label="URL de la imagen"
               variant="outlined"
               fullWidth
+              name="img"
+              onChange={handleChange}
             />
-            <Button variant="contained">Agregar</Button>
+            <Button variant="contained" type="submit">
+              Agregar
+            </Button>
           </form>
         </Box>
       </Modal>
