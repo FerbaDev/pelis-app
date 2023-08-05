@@ -38,7 +38,7 @@ export const Home = () => {
   return (
     <>
       <Header setFavourite={setFavourite} />
-      <Button onClick={handleOpen}>Open modal</Button>
+      <Button onClick={handleOpen}>Agregar peli</Button>
       <CreateMovieModal open={open} handleClose={handleClose} />
       <div className={styles.container}>
         {!favourite

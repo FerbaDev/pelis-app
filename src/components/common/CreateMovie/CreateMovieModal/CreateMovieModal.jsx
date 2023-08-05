@@ -1,4 +1,4 @@
-import { Box, Modal, Typography } from "@mui/material";
+import { Box, Button, Modal, TextField, Typography } from "@mui/material";
 
 const style = {
   position: "absolute",
@@ -25,9 +25,43 @@ export const CreateMovieModal = ({ open, handleClose }) => {
           <Typography id="modal-modal-title" variant="h6" component="h2">
             Text in a modal
           </Typography>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-          </Typography>
+          <form
+            action=""
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "space-evenly",
+              alignItems: "center",
+              height: "400px",
+            }}
+          >
+            <TextField
+              id="outlined-basic"
+              label="Título"
+              variant="outlined"
+              fullWidth
+            />
+            <TextField
+              id="outlined-basic"
+              label="Fecha"
+              variant="outlined"
+              fullWidth
+            />
+            <TextField
+              id="outlined-basic"
+              label="Descripción"
+              variant="outlined"
+              fullWidth
+            />
+
+            <TextField
+              id="outlined-basic"
+              label="URL de la imagen"
+              variant="outlined"
+              fullWidth
+            />
+            <Button variant="contained">Agregar</Button>
+          </form>
         </Box>
       </Modal>
     </>
